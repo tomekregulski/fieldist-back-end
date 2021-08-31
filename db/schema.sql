@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS fieldist_db;
+
+CREATE DATABASE fieldist_db;

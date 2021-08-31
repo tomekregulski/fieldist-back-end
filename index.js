@@ -1,30 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+const sequelize = require('./config/connection');
+const cors = require('cors');
 
-const PORT = process.env.PORT || 8081;
+const routes = require('./controllers');
+const PORT = process.env.PORT || 8082;
 
 const app = express();
 
-const testData = [
-  {
-    name: 'Tomek',
-    role: 'Admin',
-  },
-];
+var corsOptions = {
+  origin: '/',
+};
+
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello from fieldist server!');
-});
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/test', (req, res) => {
-  res.send('Hello from fieldist test route!');
-});
+app.use(express.json());
 
-app.get('/api/test', (req, res) => {
-  res.json(testData);
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}!`);
+app.use(routes);
+
+sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}!`);
+  });
 });
