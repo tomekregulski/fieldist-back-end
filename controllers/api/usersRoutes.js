@@ -6,7 +6,9 @@ const authJwt = require('../../utils/authJwt');
 const AdminRepRoute = require('../../utils/AdminRepRoute');
 const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 
-router.get('/', authJwt, AdminOnlyRoute, async (req, res) => {
+router.get('/', 
+// authJwt, AdminOnlyRoute, 
+async (req, res) => {
   try {
     const allUsers = await User.findAll({
       include: {
@@ -25,7 +27,9 @@ router.get('/', authJwt, AdminOnlyRoute, async (req, res) => {
   }
 });
 
-router.get('/reps', authJwt, AdminOnlyRoute, async (req, res) => {
+router.get('/reps', 
+// authJwt, AdminOnlyRoute, 
+async (req, res) => {
   try {
     const allUsers = await User.findAll({
       where: {
@@ -42,7 +46,9 @@ router.get('/reps', authJwt, AdminOnlyRoute, async (req, res) => {
   }
 });
 
-router.get('/:id', authJwt, async (req, res) => {
+router.get('/:id', 
+// authJwt, 
+async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
     !user
@@ -55,7 +61,9 @@ router.get('/:id', authJwt, async (req, res) => {
   }
 });
 
-router.post('/', authJwt, AdminOnlyRoute, async (req, res) => {
+router.post('/', 
+// authJwt, AdminOnlyRoute, 
+async (req, res) => {
   try {
     const userData = await User.create({
       email: req.body.email,
@@ -74,7 +82,9 @@ router.post('/', authJwt, AdminOnlyRoute, async (req, res) => {
   }
 });
 
-router.put('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
+router.put('/:id', 
+// authJwt, AdminOnlyRoute, 
+async (req, res) => {
   try {
     const userData = await User.update(
       {
@@ -100,7 +110,9 @@ router.put('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
   }
 });
 
-router.delete('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
+router.delete('/:id', 
+// authJwt, AdminOnlyRoute, 
+async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {

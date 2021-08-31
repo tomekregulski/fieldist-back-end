@@ -11,8 +11,8 @@ const {
   User,
 } = require('../../models');
 const authSwitch = require('../../utils/authSwitch');
-const authJwt = require('../../utils/authJwt');
-const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
+// const authJwt = require('../../utils/authJwt');
+// const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 
 router.get('/', authJwt, authSwitch, async (req, res) => {
   try {

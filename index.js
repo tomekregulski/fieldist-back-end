@@ -2,18 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./config/connection');
-const cors = require('cors');
+// const cors = require('cors');
 
 const routes = require('./controllers');
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-var corsOptions = {
-  origin: '/',
-};
+// var corsOptions = {
+//   origin: '/',
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
