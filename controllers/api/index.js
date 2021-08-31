@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const demosRoutes = require('./demosRoutes');
+const demosRoutes = require('./demosRoutes');
 // const auditsRoutes = require('./auditsRoutes');
 // const campaignsRoutes = require('./campaignsRoutes');
 // const venuesRoutes = require('./venuesRoutes');
@@ -10,7 +10,7 @@ const usersRoutes = require('./usersRoutes');
 // const reportRoutes = require('./reportRoutes');
 // const campaignProductsRoutes = require("./campaignProductsRoutes")
 
-// router.use('/demos', demosRoutes);
+router.use('/demos', demosRoutes);
 // router.use('/campaigns', campaignsRoutes);
 // router.use('/venues', venuesRoutes);
 // router.use('/regions', regionsRoutes);
