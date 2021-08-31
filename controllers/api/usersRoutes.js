@@ -6,9 +6,7 @@ const authJwt = require('../../utils/authJwt');
 const AdminRepRoute = require('../../utils/AdminRepRoute');
 const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 
-router.get('/', 
-// authJwt, AdminOnlyRoute, 
-async (req, res) => {
+router.get('/', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
     const allUsers = await User.findAll({
       include: {
@@ -27,9 +25,7 @@ async (req, res) => {
   }
 });
 
-router.get('/reps', 
-// authJwt, AdminOnlyRoute, 
-async (req, res) => {
+router.get('/reps', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
     const allUsers = await User.findAll({
       where: {
@@ -46,24 +42,24 @@ async (req, res) => {
   }
 });
 
-router.get('/:id', 
-// authJwt, 
-async (req, res) => {
-  try {
-    const user = await User.findByPk(req.params.id);
-    !user
-      ? res
-          .status(404)
-          .json({ message: `No user found with id: ${req.params.id}!` })
-      : res.status(200).json(user);
-  } catch (err) {
-    res.status(400).json(err);
+router.get(
+  '/:id',
+  // authJwt,
+  async (req, res) => {
+    try {
+      const user = await User.findByPk(req.params.id);
+      !user
+        ? res
+            .status(404)
+            .json({ message: `No user found with id: ${req.params.id}!` })
+        : res.status(200).json(user);
+    } catch (err) {
+      res.status(400).json(err);
+    }
   }
-});
+);
 
-router.post('/', 
-// authJwt, AdminOnlyRoute, 
-async (req, res) => {
+router.post('/', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
     const userData = await User.create({
       email: req.body.email,
@@ -82,9 +78,7 @@ async (req, res) => {
   }
 });
 
-router.put('/:id', 
-// authJwt, AdminOnlyRoute, 
-async (req, res) => {
+router.put('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
     const userData = await User.update(
       {
@@ -110,9 +104,7 @@ async (req, res) => {
   }
 });
 
-router.delete('/:id', 
-// authJwt, AdminOnlyRoute, 
-async (req, res) => {
+router.delete('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
