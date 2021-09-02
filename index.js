@@ -14,6 +14,7 @@ const app = express();
 // };
 
 // app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(bodyParser.json());
 
