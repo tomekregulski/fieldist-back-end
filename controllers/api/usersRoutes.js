@@ -6,41 +6,51 @@ const authJwt = require('../../utils/authJwt');
 const AdminRepRoute = require('../../utils/AdminRepRoute');
 const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 
-router.get('/', authJwt, AdminOnlyRoute, async (req, res) => {
-  try {
-    const allUsers = await User.findAll({
-      include: {
-        model: Brand,
-        as: 'brand',
-      },
-      attributes: {
-        exclude: ['password'],
-      },
-    });
-    const userData = allUsers.map((user) => user.get({ plain: true }));
-    res.status(200).json(userData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+router.get(
+  '/',
+  // authJwt,
+  // AdminOnlyRoute,
+  async (req, res) => {
+    try {
+      const allUsers = await User.findAll({
+        include: {
+          model: Brand,
+          as: 'brand',
+        },
+        attributes: {
+          exclude: ['password'],
+        },
+      });
+      const userData = allUsers.map((user) => user.get({ plain: true }));
+      res.status(200).json(userData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
   }
-});
+);
 
-router.get('/reps', authJwt, AdminOnlyRoute, async (req, res) => {
-  try {
-    const allUsers = await User.findAll({
-      where: {
-        role: 'rep',
-      },
-      attributes: {
-        exclude: ['password'],
-      },
-    });
-    const userData = allUsers.map((user) => user.get({ plain: true }));
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(500).json(err);
+router.get(
+  '/reps',
+  // authJwt,
+  // AdminOnlyRoute,
+  async (req, res) => {
+    try {
+      const allUsers = await User.findAll({
+        where: {
+          role: 'rep',
+        },
+        attributes: {
+          exclude: ['password'],
+        },
+      });
+      const userData = allUsers.map((user) => user.get({ plain: true }));
+      res.status(200).json(userData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
-});
+);
 
 router.get(
   '/:id',
@@ -78,47 +88,55 @@ router.post('/', authJwt, AdminOnlyRoute, async (req, res) => {
   }
 });
 
-router.put('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
-  try {
-    const userData = await User.update(
-      {
-        email: req.body.email,
-        password: req.body.password,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        brand_id: req.body.brand_id,
-        role: req.body.role,
-        image: req.body.image,
-      },
-      {
+router.put(
+  '/:id',
+  // authJwt, AdminOnlyRoute,
+  async (req, res) => {
+    try {
+      const userData = await User.update(
+        {
+          email: req.body.email,
+          password: req.body.password,
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          brand_id: req.body.brand_id,
+          role: req.body.role,
+          image: req.body.image,
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
+          individualHooks: true,
+        }
+      );
+      res.status(200).json(userData);
+    } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
+    }
+  }
+);
+
+router.delete(
+  '/:id',
+  // authJwt, AdminOnlyRoute,
+  async (req, res) => {
+    try {
+      const userData = await User.destroy({
         where: {
           id: req.params.id,
         },
-        individualHooks: true,
+      });
+
+      if (!userData) {
+        res.status(404).json({ message: `No such user found!` });
       }
-    );
-    res.status(200).json(userData);
-  } catch (err) {
-    console.log(err);
-    res.status(400).json(err);
-  }
-});
-
-router.delete('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
-  try {
-    const userData = await User.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (!userData) {
-      res.status(404).json({ message: `No such user found!` });
+    } catch (err) {
+      res.status(500).json(err);
     }
-  } catch (err) {
-    res.status(500).json(err);
   }
-});
+);
 
 router.post('/login', async (req, res) => {
   try {
