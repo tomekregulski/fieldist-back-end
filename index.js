@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./config/connection');
-// const cors = require('cors');
+const cors = require('cors');
 
 const routes = require('./controllers');
 const PORT = process.env.PORT || 5000;
