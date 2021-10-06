@@ -139,19 +139,22 @@ router.delete(
 );
 
 router.post('/login', async (req, res) => {
+  console.log(req.body.payload);
   try {
     const userData = await User.findOne({
       where: {
-        email: req.body.email,
+        email: req.body.payload.email,
       },
     });
-    console.log(userData);
+    // console.log(userData);
     if (!userData) {
       res.status(400).json('Incorrect username or password...');
       return;
     }
 
-    const passwordData = await userData.checkPassword(req.body.password);
+    const passwordData = await userData.checkPassword(
+      req.body.payload.password
+    );
 
     if (!passwordData) {
       res.status(400).json('Incorrect username or password...');
@@ -174,7 +177,7 @@ router.post('/login', async (req, res) => {
       email: userData.email,
       brand_id: userData.brand_id,
       roles: authorities,
-      accessToken: token,
+      token,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -182,16 +185,34 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    console.log('loggin out now...');
-    req.session.destroy(() => {
-      res.status(204).end({});
-    });
-  } else {
-    res.status(404).end();
-    console.log('test');
+router.get('/current-user', (req, res) => {
+  console.log(req.session);
+  if (!req.session.jwt) {
+    return res.send({ currentUser: null });
   }
+  try {
+    const payload = jwt.verify(req.session.jwt, config.secret);
+    res.send({ currentUser: payload });
+  } catch (err) {
+    res.send({ currentUser: null });
+  }
+});
+
+// router.post('/logout', (req, res) => {
+//   if (req.session.logged_in) {
+//     console.log('logging out now...');
+//     req.session.destroy(() => {
+//       res.status(204).end({});
+//     });
+//   } else {
+//     res.status(404).end();
+//     console.log('test');
+//   }
+// });
+
+router.post('/logout', (req, res) => {
+  req.session = null;
+  res.send({});
 });
 
 module.exports = router;
