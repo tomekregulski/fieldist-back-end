@@ -5,11 +5,12 @@ const Campaign = require('./Campaign');
 const Product = require('./Product');
 const Region = require('./Region');
 const Rep = require('./Rep');
-const ReportTemplate = require('./ReportTemplate');
+// const ReportTemplate = require('./ReportTemplate');
 const Venue = require('./Venue');
 const Brand = require('./Brand');
 const Audit = require('./Audit');
 const User = require('./User');
+const IntellyGeneralReport = require('./IntellyGeneralReport');
 
 // const CampaignProduct = require('./CampaignProduct');
 
@@ -37,21 +38,21 @@ Brand.hasOne(BrandContact, {
   foreignKey: 'brand_id',
 });
 
-Demo.belongsTo(ReportTemplate, {
-  foreignKey: 'report_template_id',
-});
+// Demo.belongsTo(ReportTemplate, {
+//   foreignKey: 'report_template_id',
+// });
 
-ReportTemplate.hasMany(Demo, {
-  foreignKey: 'report_template_id',
-});
+// ReportTemplate.hasMany(Demo, {
+//   foreignKey: 'report_template_id',
+// });
 
-Audit.belongsTo(ReportTemplate, {
-  foreignKey: 'report_template_id',
-});
+// Audit.belongsTo(ReportTemplate, {
+//   foreignKey: 'report_template_id',
+// });
 
-ReportTemplate.hasMany(Audit, {
-  foreignKey: 'report_template_id',
-});
+// ReportTemplate.hasMany(Audit, {
+//   foreignKey: 'report_template_id',
+// });
 
 // Campaign.hasMany(CampaignProduct, {
 //   foreignKey: 'campaign_id',
@@ -170,9 +171,10 @@ module.exports = {
   Product,
   Region,
   Rep,
-  ReportTemplate,
+  // ReportTemplate,
   Venue,
   Brand,
   Admin,
   User,
+  IntellyGeneralReport,
 };

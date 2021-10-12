@@ -7,7 +7,7 @@ const demosRoutes = require('./demosRoutes');
 // const brandsRoutes = require('./brandsRoutes');
 // const productsRoutes = require('./productsRoutes');
 const usersRoutes = require('./usersRoutes');
-// const reportRoutes = require('./reportRoutes');
+const reportRoutes = require('./reportRoutes');
 // const campaignProductsRoutes = require("./campaignProductsRoutes")
 
 router.use('/demos', demosRoutes);
@@ -18,7 +18,7 @@ router.use('/demos', demosRoutes);
 // router.use('/products', productsRoutes);
 // router.use('/audits', auditsRoutes);
 router.use('/users', usersRoutes);
-// router.use('/reports', reportRoutes);
+router.use('/reports', reportRoutes);
 
 // router.use("./campaign_products", campaignProductsRoutes);
 
