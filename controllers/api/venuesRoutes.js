@@ -3,22 +3,26 @@ const { Venue, Region } = require('../../models');
 const authJwt = require('../../utils/authJwt');
 const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 
-router.get('/', authJwt, AdminOnlyRoute, async (req, res) => {
-  try {
-    const venueData = await Venue.findAll({
-      include: [
-        {
-          model: Region,
-          as: 'region',
-        },
-      ],
-    });
+router.get(
+  '/',
+  // authJwt, AdminOnlyRoute,
+  async (req, res) => {
+    try {
+      const venueData = await Venue.findAll({
+        include: [
+          {
+            model: Region,
+            as: 'region',
+          },
+        ],
+      });
 
-    res.status(200).json(venueData);
-  } catch (err) {
-    res.status(400).json(err);
+      res.status(200).json(venueData);
+    } catch (err) {
+      res.status(400).json(err);
+    }
   }
-});
+);
 
 router.get('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
