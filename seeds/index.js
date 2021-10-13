@@ -1,15 +1,11 @@
 const seedRegions = require('./regionSeeds');
 const seedBrands = require('./brandSeeds');
-// const seedBrandContacts = require('./brandContactSeeds');
 const seedProducts = require('./productSeeds');
-// const seedReportTemplates = require('./reportTemplateSeeds');
-const seedCampaigns = require('./campaignSeeds');
-// const seedAdmins = require('./adminSeeds');
-const seedAudits = require('./auditSeeds');
-// const seedReps = require('./repSeeds');
+const seedReportQuestions = require('./reportQuestionsSeeds');
+// const seedCampaigns = require('./campaignSeeds');
+// const seedAudits = require('./auditSeeds');
 const seedVenues = require('./venueSeeds');
-const seedDemos = require('./demoSeeds');
-// const seedCampaignProducts = require('./campaignProductSeeds');
+// const seedDemos = require('./demoSeeds');
 const seedUsers = require('./userSeeds');
 const seedIntellyGeneralReport = require('./intellyGeneralReportSeeds');
 
@@ -25,20 +21,17 @@ const seedAll = async () => {
   await seedVenues();
   console.log('\n----- VENUES SEEDED -----\n');
 
-  // await seedReportTemplates();
-  // console.log('\n----- REPORT TEMPLATES SEEDED -----\n');
-
   await seedBrands();
   console.log('\n----- BRANDS SEEDED -----\n');
 
   await seedProducts();
   console.log('\n----- PRODUCTS SEEDED -----\n');
 
-  await seedCampaigns();
-  console.log('\n----- CAMPAIGNS SEEDED -----\n');
+  await seedReportQuestions();
+  console.log('\n----- REPORT QUESTIONS SEEDED -----\n');
 
-  // await seedCampaignProducts();
-  // console.log('\n----- CAMPAIGN PRODUCTS SEEDED -----\n');
+  // await seedCampaigns();
+  // console.log('\n----- CAMPAIGNS SEEDED -----\n');
 
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
