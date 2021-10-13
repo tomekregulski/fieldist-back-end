@@ -18,7 +18,7 @@ router.get(
           as: 'brand',
         },
         attributes: {
-          exclude: ['password'],
+          // exclude: ['password'],
         },
       });
       const userData = allUsers.map((user) => user.get({ plain: true }));
