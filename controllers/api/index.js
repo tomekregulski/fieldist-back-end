@@ -8,7 +8,7 @@ const brandsRoutes = require('./brandsRoutes');
 // const productsRoutes = require('./productsRoutes');
 const usersRoutes = require('./usersRoutes');
 const reportRoutes = require('./reportRoutes');
-// const campaignProductsRoutes = require("./campaignProductsRoutes")
+const repSessionRoutes = require('./repSessionRoutes');
 
 router.use('/demos', demosRoutes);
 // router.use('/campaigns', campaignsRoutes);
@@ -20,6 +20,6 @@ router.use('/brands', brandsRoutes);
 router.use('/users', usersRoutes);
 router.use('/reports', reportRoutes);
 
-// router.use("./campaign_products", campaignProductsRoutes);
+router.use('/session', repSessionRoutes);
 
 module.exports = router;

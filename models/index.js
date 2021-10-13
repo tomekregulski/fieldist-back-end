@@ -10,6 +10,7 @@ const Venue = require('./Venue');
 const Brand = require('./Brand');
 const User = require('./User');
 const IntellyGeneralReport = require('./IntellyGeneralReport');
+const RepSession = require('./RepSession');
 
 Product.belongsTo(Brand, {
   foreignKey: 'brand_id',
@@ -41,6 +42,14 @@ ReportQuestions.belongsTo(Brand, {
 
 Brand.hasMany(ReportQuestions, {
   foreignKey: 'brand_id',
+});
+
+RepSession.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+User.hasMany(RepSession, {
+  foreignKey: 'user_id',
 });
 
 Demo.belongsTo(Campaign, {
@@ -95,6 +104,7 @@ module.exports = {
   Demo,
   BrandContact,
   // CampaignProduct,
+  RepSession,
   Campaign,
   Product,
   Region,

@@ -3,7 +3,7 @@ const seedBrands = require('./brandSeeds');
 const seedProducts = require('./productSeeds');
 const seedReportQuestions = require('./reportQuestionsSeeds');
 // const seedCampaigns = require('./campaignSeeds');
-// const seedAudits = require('./auditSeeds');
+const seedRepSession = require('./repSessionSeeds');
 const seedVenues = require('./venueSeeds');
 // const seedDemos = require('./demoSeeds');
 const seedUsers = require('./userSeeds');
@@ -45,8 +45,8 @@ const seedAll = async () => {
   // await seedDemos();
   // console.log('\n----- DEMOS SEEDED -----\n');
 
-  // await seedAudits();
-  // console.log('\n----- AUDITS SEEDED -----\n');
+  await seedRepSession();
+  console.log('\n----- REP SESSIONS SEEDED -----\n');
 
   process.exit(0);
 };
