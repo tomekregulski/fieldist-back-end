@@ -10,11 +10,8 @@ router.get(
   '/',
   // authJwt, authSwitch,
   async (req, res) => {
-    const filter = req.user_role;
     try {
-      const reportData = await IntellyGeneralReport.findAll({
-        where: filter,
-      });
+      const reportData = await IntellyGeneralReport.findAll();
       res.status(200).json(reportData);
     } catch (err) {
       res.status(400).json(err);

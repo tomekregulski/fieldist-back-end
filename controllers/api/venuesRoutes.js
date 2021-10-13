@@ -4,6 +4,24 @@ const authJwt = require('../../utils/authJwt');
 const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 
 router.get(
+  '/name',
+  // authJwt, AdminOnlyRoute,
+  async (req, res) => {
+    try {
+      const venueData = await Venue.findAll({
+        where: {
+          name: req.headers.name,
+        },
+      });
+
+      res.status(200).json(venueData);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  }
+);
+
+router.get(
   '/',
   // authJwt, AdminOnlyRoute,
   async (req, res) => {
