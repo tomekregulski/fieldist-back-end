@@ -9,7 +9,7 @@ const ReportQuestions = require('./ReportQuestions');
 const Venue = require('./Venue');
 const Brand = require('./Brand');
 const User = require('./User');
-const IntellyGeneralReport = require('./IntellyGeneralReport');
+const GeneralFieldReport = require('./GeneralFieldReport');
 const RepSession = require('./RepSession');
 
 Product.belongsTo(Brand, {
@@ -114,5 +114,5 @@ module.exports = {
   Brand,
   Admin,
   User,
-  IntellyGeneralReport,
+  GeneralFieldReport,
 };
