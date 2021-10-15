@@ -7,7 +7,7 @@ const seedRepSession = require('./repSessionSeeds');
 const seedVenues = require('./venueSeeds');
 // const seedDemos = require('./demoSeeds');
 const seedUsers = require('./userSeeds');
-const seedIntellyGeneralReport = require('./intellyGeneralReportSeeds');
+const seedGeneralFieldReport = require('./generalFieldReportSeeds');
 
 const sequelize = require('../config/connection');
 
@@ -39,8 +39,8 @@ const seedAll = async () => {
   // await seedRoles();
   // console.log('\n----- ROLES SEEDED -----\n');
 
-  await seedIntellyGeneralReport();
-  console.log('\n----- INTELLY GENERAL REPORTS SEEDED -----\n');
+  await seedGeneralFieldReport();
+  console.log('\n----- GENERAL FIELD REPORTS SEEDED -----\n');
 
   // await seedDemos();
   // console.log('\n----- DEMOS SEEDED -----\n');

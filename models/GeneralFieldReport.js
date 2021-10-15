@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class IntellyGeneralReport extends Model {}
+class GeneralFieldReport extends Model {}
 
-IntellyGeneralReport.init(
+GeneralFieldReport.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,20 +11,38 @@ IntellyGeneralReport.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    general: {
+    date: {
       type: DataTypes.STRING,
     },
-    inventory: {
+    time: {
       type: DataTypes.STRING,
+    },
+    location: {
+      type: DataTypes.STRING,
+    },
+    brand: {
+      type: DataTypes.STRING,
+    },
+    form: {
+      type: DataTypes.STRING,
+    },
+    user_name: {
+      type: DataTypes.STRING,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
     },
     response: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
+    },
+    inventory: {
+      type: DataTypes.JSON,
     },
     photos: {
       type: DataTypes.STRING,
     },
     expenses: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
     },
   },
   {
@@ -35,4 +53,4 @@ IntellyGeneralReport.init(
   }
 );
 
-module.exports = IntellyGeneralReport;
+module.exports = GeneralFieldReport;
