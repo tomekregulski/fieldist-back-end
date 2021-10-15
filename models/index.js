@@ -1,14 +1,10 @@
-const Demo = require('./Demo');
-const Admin = require('./Admin');
-const BrandContact = require('./BrandContact');
+const ScheduledEvent = require('./ScheduledEvent');
 const Campaign = require('./Campaign');
 const Product = require('./Product');
 const Region = require('./Region');
-const Rep = require('./Rep');
 const ReportQuestions = require('./ReportQuestions');
 const Venue = require('./Venue');
 const Brand = require('./Brand');
-const User = require('./User');
 const GeneralFieldReport = require('./GeneralFieldReport');
 const RepSession = require('./RepSession');
 
@@ -28,14 +24,6 @@ Brand.hasMany(Campaign, {
   foreignKey: 'brand_id',
 });
 
-BrandContact.belongsTo(Brand, {
-  foreignKey: 'brand_id',
-});
-
-Brand.hasOne(BrandContact, {
-  foreignKey: 'brand_id',
-});
-
 ReportQuestions.belongsTo(Brand, {
   foreignKey: 'brand_id',
 });
@@ -44,52 +32,20 @@ Brand.hasMany(ReportQuestions, {
   foreignKey: 'brand_id',
 });
 
-RepSession.belongsTo(User, {
-  foreignKey: 'user_id',
-});
-
-User.hasMany(RepSession, {
-  foreignKey: 'user_id',
-});
-
-Demo.belongsTo(Campaign, {
+ScheduledEvent.belongsTo(Campaign, {
   foreignKey: 'campaign_id',
 });
 
-Campaign.hasMany(Demo, {
+Campaign.hasMany(ScheduledEvent, {
   foreignKey: 'campaign_id',
 });
 
-Demo.belongsTo(Venue, {
+ScheduledEvent.belongsTo(Venue, {
   foreignKey: 'venue_id',
 });
 
-Venue.hasMany(Demo, {
+Venue.hasMany(ScheduledEvent, {
   foreignKey: 'venue_id',
-});
-
-Demo.belongsTo(Rep, {
-  foreignKey: 'rep_id',
-});
-
-Rep.hasMany(Demo, {
-  foreignKey: 'rep_id',
-});
-
-Demo.belongsTo(User, {
-  foreignKey: 'user_id',
-});
-
-User.hasMany(Demo, {
-  foreignKey: 'user_id',
-});
-
-User.belongsTo(Brand, {
-  foreignKey: 'user_id',
-});
-
-Brand.hasOne(User, {
-  foreignKey: 'user_id',
 });
 
 Venue.belongsTo(Region, {
@@ -101,18 +57,13 @@ Region.hasMany(Venue, {
 });
 
 module.exports = {
-  Demo,
-  BrandContact,
-  // CampaignProduct,
+  ScheduledEvent,
   RepSession,
   Campaign,
   Product,
   Region,
-  Rep,
   ReportQuestions,
   Venue,
   Brand,
-  Admin,
-  User,
   GeneralFieldReport,
 };

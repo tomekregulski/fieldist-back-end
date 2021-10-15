@@ -1,6 +1,6 @@
-const { Demo } = require('../models');
+const { ScheduledEvent } = require('../models');
 
-const demoData = [
+const scheduledEventData = [
   {
     date: '06/1/2021',
     start_time: '11:00',
@@ -99,6 +99,6 @@ const demoData = [
   },
 ];
 
-const seedDemos = () => Demo.bulkCreate(demoData);
+const seedScheduledEvents = () => ScheduledEvent.bulkCreate(scheduledEventData);
 
-module.exports = seedDemos;
+module.exports = seedScheduledEvents;

@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS fieldist_db;
+DROP DATABASE IF EXISTS intelly_auth_db;
 
-CREATE DATABASE fieldist_db;
+CREATE DATABASE intelly_auth_db;
