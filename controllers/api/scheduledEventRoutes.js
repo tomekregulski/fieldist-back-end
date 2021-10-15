@@ -1,15 +1,11 @@
 const router = require('express').Router();
 const {
   Campaign,
-  Audit,
-  Demo,
-  Rep,
+  ScheduledEvent,
   Venue,
   Brand,
   Region,
   Product,
-  ReportTemplate,
-  User,
 } = require('../../models');
 const authSwitch = require('../../utils/authSwitch');
 const authJwt = require('../../utils/authJwt');
@@ -22,15 +18,15 @@ router.get('/', authJwt, authSwitch, async (req, res) => {
 
   let events = [];
   try {
-    const demoData = await Demo.findAll({
+    const eventData = await ScheduledEvent.findAll({
       include: [
         {
           model: Campaign,
           as: 'campaign',
-          include: {
-            model: ReportTemplate,
-            as: 'report_template',
-          },
+          // include: {
+          //   model: ReportTemplate,
+          //   as: 'report_template',
+          // },
           include: {
             model: Brand,
             as: 'brand',
@@ -40,10 +36,7 @@ router.get('/', authJwt, authSwitch, async (req, res) => {
             },
           },
         },
-        {
-          model: User,
-          as: 'user',
-        },
+
         {
           model: Venue,
           as: 'venue',
@@ -52,57 +45,11 @@ router.get('/', authJwt, authSwitch, async (req, res) => {
             as: 'region',
           },
         },
-        {
-          model: ReportTemplate,
-          as: 'report_template',
-        },
-      ],
-      where: filter,
-    });
-    const auditData = await Audit.findAll({
-      include: [
-        {
-          model: Campaign,
-          as: 'campaign',
-          include: {
-            model: ReportTemplate,
-            as: 'report_template',
-          },
-          include: {
-            model: Brand,
-            as: 'brand',
-            include: {
-              model: Product,
-              as: 'products',
-            },
-          },
-        },
-        {
-          model: User,
-          as: 'user',
-        },
-        {
-          model: Venue,
-          as: 'venue',
-          include: {
-            model: Region,
-            as: 'region',
-          },
-        },
-        {
-          model: ReportTemplate,
-          as: 'report_template',
-        },
       ],
       where: filter,
     });
 
-    demoData.forEach((demo) => events.push(demo));
-    // console.log(events);
-    auditData.forEach((audit) => events.push(audit));
-    // console.log(events);
-
-    res.status(200).json(events);
+    res.status(200).json(eventData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -110,15 +57,15 @@ router.get('/', authJwt, authSwitch, async (req, res) => {
 
 router.get('/:id', authJwt, async (req, res) => {
   try {
-    const demoData = await Demo.findByPk(req.params.id, {
+    const eventData = await ScheduledEvent.findByPk(req.params.id, {
       include: [
         {
           model: Campaign,
           as: 'campaign',
-          include: {
-            model: ReportTemplate,
-            as: 'report_template',
-          },
+          // include: {
+          //   model: ReportTemplate,
+          //   as: 'report_template',
+          // },
           include: {
             model: Brand,
             as: 'brand',
@@ -129,10 +76,6 @@ router.get('/:id', authJwt, async (req, res) => {
           },
         },
         {
-          model: Rep,
-          as: 'rep',
-        },
-        {
           model: Venue,
           as: 'venue',
           include: {
@@ -140,17 +83,13 @@ router.get('/:id', authJwt, async (req, res) => {
             as: 'region',
           },
         },
-        {
-          model: ReportTemplate,
-          as: 'report_template',
-        },
       ],
     });
-    if (!demoData) {
+    if (!eventData) {
       res.status(404).json({ message: 'No demo found with this id!' });
       return;
     }
-    res.status(200).json(demoData);
+    res.status(200).json(eventData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -158,7 +97,7 @@ router.get('/:id', authJwt, async (req, res) => {
 
 router.post('/', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
-    const demoData = await Demo.create({
+    const eventData = await ScheduledEvent.create({
       date: req.body.date,
       start_time: req.body.start_time,
       duration: req.body.duration,
@@ -168,16 +107,16 @@ router.post('/', authJwt, AdminOnlyRoute, async (req, res) => {
       user_id: req.body.user_id,
       report_template_id: req.body.report_template_id,
     });
-    res.status(200).json(demoData);
+    res.status(200).json(eventData);
   } catch (err) {
     res.status(400).json(err);
     console.log(err);
   }
 });
 
-router.put('/:id', authJwt, AdminRepRoute,  async (req, res) => {
+router.put('/:id', authJwt, AdminRepRoute, async (req, res) => {
   try {
-    const demoData = await Demo.update(
+    const eventData = await ScheduledEvent.update(
       {
         date: req.body.date,
         start_time: req.body.start_time,
@@ -194,7 +133,7 @@ router.put('/:id', authJwt, AdminRepRoute,  async (req, res) => {
         },
       }
     );
-    res.status(200).json(demoData);
+    res.status(200).json(eventData);
     console.log(req.body);
   } catch (err) {
     res.status(500).json(err);
@@ -203,19 +142,19 @@ router.put('/:id', authJwt, AdminRepRoute,  async (req, res) => {
 
 router.delete('/:id', authJwt, AdminOnlyRoute, async (req, res) => {
   try {
-    const demoData = await Demo.destroy({
+    const eventData = await ScheduledEvent.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!demoData) {
+    if (!eventData) {
       res
         .status(404)
         .json({ message: `No demo found with id: ${req.params.id}!` });
     }
 
-    res.status(200).json(demoData);
+    res.status(200).json(eventData);
   } catch (err) {
     res.status(500).json(err);
   }

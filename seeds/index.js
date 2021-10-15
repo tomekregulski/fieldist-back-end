@@ -5,8 +5,7 @@ const seedReportQuestions = require('./reportQuestionsSeeds');
 // const seedCampaigns = require('./campaignSeeds');
 const seedRepSession = require('./repSessionSeeds');
 const seedVenues = require('./venueSeeds');
-// const seedDemos = require('./demoSeeds');
-const seedUsers = require('./userSeeds');
+// const seedScheduledEventss = require('./scheduledEventSeeds');
 const seedGeneralFieldReport = require('./generalFieldReportSeeds');
 
 const sequelize = require('../config/connection');
@@ -33,17 +32,11 @@ const seedAll = async () => {
   // await seedCampaigns();
   // console.log('\n----- CAMPAIGNS SEEDED -----\n');
 
-  await seedUsers();
-  console.log('\n----- USERS SEEDED -----\n');
-
-  // await seedRoles();
-  // console.log('\n----- ROLES SEEDED -----\n');
-
   await seedGeneralFieldReport();
   console.log('\n----- GENERAL FIELD REPORTS SEEDED -----\n');
 
-  // await seedDemos();
-  // console.log('\n----- DEMOS SEEDED -----\n');
+  // await seedScheduledEventss();
+  // console.log('\n----- SCHEDULED EVENTS SEEDED -----\n');
 
   await seedRepSession();
   console.log('\n----- REP SESSIONS SEEDED -----\n');

@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Demo extends Model {}
+class ScheduledEvent extends Model {}
 
-Demo.init(
+ScheduledEvent.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,11 +11,11 @@ Demo.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: 'demo',
-    },
+    // type: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   defaultValue: 'demo',
+    // },
     status: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -29,10 +29,6 @@ Demo.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // end_time: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     duration: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -61,37 +57,13 @@ Demo.init(
         key: 'id',
       },
     },
-    // rep_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   references: {
-    //     model: 'rep',
-    //     key: 'id',
-    //   },
-    // },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
-    report_template_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'report_template',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'demo',
+    modelName: 'scheduled_event',
   }
 );
 
-module.exports = Demo;
+module.exports = ScheduledEvent;
