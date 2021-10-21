@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./config/connection');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 const routes = require('./controllers');
 const PORT = process.env.PORT || 5001;
 
 const app = express();
+app.use(fileUpload());
 
 // var corsOptions = {
 //   origin: '/',

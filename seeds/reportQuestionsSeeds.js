@@ -3,9 +3,27 @@ const { ReportQuestions } = require('../models');
 const simmerQuestions = [
   {
     type: 'select',
-    question: 'Was this a good day to be at this store?',
+    question: 'Were you able to connect with a team member?',
     choices: ['yes', 'no'],
   },
+  {
+    type: 'checkbox',
+    question: 'Which of the following were you able to complete?',
+    choices: [
+      'Tidy up the shelf',
+      'Take a photo of the full shelf section',
+      'Place coupons on product',
+    ],
+  },
+  {
+    type: 'select',
+    question:
+      'Did every SKU have a price tag? If not, please include a close-up photo(s) that clearly shows any missing tags',
+    choices: ['yes', 'no'],
+  },
+];
+
+const sasoQuestions = [
   {
     type: 'select',
     question: 'Were you able to connect with a team member?',
@@ -15,34 +33,16 @@ const simmerQuestions = [
     type: 'checkbox',
     question: 'Which of the following were you able to complete?',
     choices: [
-      'neaten shelf',
-      'shelf photo',
-      'coupons on product',
-      'ask about secondary placement',
+      'Tidy up the shelf',
+      'Take a photo of the full shelf section',
+      'Place coupons on product',
     ],
   },
   {
     type: 'select',
-    question: 'Is this store open to secondary placement?',
-    choices: ['yes', 'no', 'N/A - was not able to speak to anyone'],
-  },
-];
-
-const sasoQuestions = [
-  {
-    type: 'select',
-    question: 'Was this a good day to be at this store?',
+    question:
+      'Did every SKU have a price tag? If not, please include a close-up photo(s) that clearly shows any missing tags',
     choices: ['yes', 'no'],
-  },
-  {
-    type: 'select',
-    question: 'Were you able to connect with a team member?',
-    choices: ['yes', 'no'],
-  },
-  {
-    type: 'checkbox',
-    question: 'Which of the following were you able to complete?',
-    choices: ['neaten shelf', 'shelf photo', 'coupons on product'],
   },
 ];
 

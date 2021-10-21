@@ -1,16 +1,6 @@
 const { Brand } = require('../models');
 
 const brandData = [
-  // {
-  //   name: "Sir Kensington's",
-  //   image:
-  //     'http://res.cloudinary.com/yup-schlepp/image/upload/v1625814878/jibcfczmin4mfxcmxhdy.jpg',
-  // },
-  // {
-  //   name: 'Bowery Farming',
-  //   image:
-  //     'http://res.cloudinary.com/yup-schlepp/image/upload/v1625815033/vqalfan5r3ygm9grswgy.jpg',
-  // },
   {
     name: 'Simmer',
     image:
