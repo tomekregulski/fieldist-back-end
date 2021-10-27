@@ -18,7 +18,7 @@ The repo you are currently visiting is the back end for the Field Events applica
 
 # Additional Goals for Development
 
-The further development of this project will be guided by the development of the related front ends, as well as continuous revision toward efficiency and performance optimization.
+The further development of this project will be guided by the development of the related front ends, as well as continuous revision toward efficiency and performance optimization. Additionally, we will soon be implementing proper role-based protection for all endpoints.
 
 # Installation and Contribution
 
