@@ -5,6 +5,20 @@ const authJwt = require('../../utils/authJwt');
 const AdminOnlyRoute = require('../../utils/AdminOnlyRoute');
 const AdminRepRoute = require('../../utils/AdminRepRoute');
 const authSwitch = require('../../utils/authSwitch');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+const storage = multer.diskStorage({
+  destination: function (req, res, cb) {
+    cb(null, '../../uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 router.get(
   '/',
@@ -52,7 +66,6 @@ router.post(
         expenses: req.body.payload.expenses,
       });
       res.status(200).json(reportData);
-      console.log(req.body);
     } catch (err) {
       res.status(400).json(err);
       console.log(err);

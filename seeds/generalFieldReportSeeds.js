@@ -2,6 +2,7 @@ const { GeneralFieldReport } = require('../models');
 
 const generalFieldReport = {
   date: 'test',
+  time: 'test',
   location: 'test',
   brand: 'test',
   form: 'test',

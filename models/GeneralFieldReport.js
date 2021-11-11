@@ -39,7 +39,7 @@ GeneralFieldReport.init(
       type: DataTypes.JSON,
     },
     photos: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
     },
     expenses: {
       type: DataTypes.JSON,
@@ -49,7 +49,7 @@ GeneralFieldReport.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'intelly_general_report',
+    modelName: 'general_field_report',
   }
 );
 
