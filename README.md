@@ -1,6 +1,6 @@
 # Intelly - General Overview and Current State
 
-The Fieldist repos are part of a larger project called Intelly, which is a platform being built to help small-to-medium-sized food and beverage brands manage various aspects of their business. The project is divided into separate repos to allow indeoendent development. Below, you can find a list of the specific fton and back ends that make up this project, links to their individual repos, as well as whether or not they have been deployed for public demo.
+Intelly is a platform being built to help small-to-medium-sized food and beverage brands manage various aspects of their business. The project is divided into separate repos to allow independent development. Below, you can find a list of the specific front and back ends that make up this project, links to their individual repos, as well as whether or not they have been deployed for public demo.
 
 The public demos should be accessed thought this link: https://gallant-wing-415919.netlify.app/
 This will bring you to a login page, which you can enter with the following credentials:
@@ -18,7 +18,7 @@ The repo you are currently visiting is the back end for the Field Events applica
 
 # Additional Goals for Development
 
-The further development of this project will be guided by the development of the related front ends, as well as continuous revision toward efficiency and performance optimization.
+The further development of this project will be guided by the development of the related front ends, as well as continuous revision toward efficiency and performance optimization. Additionally, we will soon be implementing proper role-based protection for all endpoints.
 
 # Installation and Contribution
 
@@ -46,4 +46,4 @@ The following is a list of all related projects that have entered some stage of 
 <a href="https://github.com/tomekregulski/intelly-payments-server">Payments - Back End</a> - Early Stage, Not Deployed for Demo <br>
 <a href="https://github.com/tomekregulski/intelly-form-builder-client">Form Builder - Front End</a> - Early Stage, Not Deployed for Demo <br>
 <a href="https://github.com/tomekregulski/intelly-form-builder-server">Form Builder - Back End</a> - Early Stage, Not Deployed for Demo <br>
-<a href="https://github.com/tomekregulski/intelly-schedule-client">Schedule - Front End</a> - Early Stage, Not Deployed for Demo <br>
+<a href="https://github.com/tomekregulski/intelly-schedule-client">Schedule - Front End</a> - arly Stage, Not Deployed for Demo  <br>
